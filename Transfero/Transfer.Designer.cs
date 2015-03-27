@@ -36,9 +36,6 @@
             this.newSampleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newTransferToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteSampleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showDataToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,6 +74,9 @@
             this.label12 = new System.Windows.Forms.Label();
             this.buttonAddSample = new System.Windows.Forms.Button();
             this.buttonStornoSample = new System.Windows.Forms.Button();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zoteroConnectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deteleManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panelNewSample.SuspendLayout();
             this.panelNewLocation.SuspendLayout();
@@ -117,7 +117,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newToolStripMenuItem,
-            this.deleteToolStripMenuItem,
+            this.settingsToolStripMenuItem,
             this.showDataToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -139,44 +139,23 @@
             // newSampleToolStripMenuItem
             // 
             this.newSampleToolStripMenuItem.Name = "newSampleToolStripMenuItem";
-            this.newSampleToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.newSampleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.newSampleToolStripMenuItem.Text = "New Sample";
             this.newSampleToolStripMenuItem.Click += new System.EventHandler(this.newSampleToolStripMenuItem_Click);
             // 
             // newLocationToolStripMenuItem
             // 
             this.newLocationToolStripMenuItem.Name = "newLocationToolStripMenuItem";
-            this.newLocationToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.newLocationToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.newLocationToolStripMenuItem.Text = "New Location";
             this.newLocationToolStripMenuItem.Click += new System.EventHandler(this.newLocationToolStripMenuItem_Click);
             // 
             // newTransferToolStripMenuItem
             // 
             this.newTransferToolStripMenuItem.Name = "newTransferToolStripMenuItem";
-            this.newTransferToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.newTransferToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.newTransferToolStripMenuItem.Text = "New Transfer";
             this.newTransferToolStripMenuItem.Click += new System.EventHandler(this.newTransferToolStripMenuItem_Click);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.deleteSampleToolStripMenuItem,
-            this.deleteLocationToolStripMenuItem});
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.deleteToolStripMenuItem.Text = "Delete";
-            // 
-            // deleteSampleToolStripMenuItem
-            // 
-            this.deleteSampleToolStripMenuItem.Name = "deleteSampleToolStripMenuItem";
-            this.deleteSampleToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.deleteSampleToolStripMenuItem.Text = "Delete Sample";
-            // 
-            // deleteLocationToolStripMenuItem
-            // 
-            this.deleteLocationToolStripMenuItem.Name = "deleteLocationToolStripMenuItem";
-            this.deleteLocationToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.deleteLocationToolStripMenuItem.Text = "Delete Location";
             // 
             // showDataToolStripMenuItem
             // 
@@ -189,7 +168,7 @@
             // showDataToolStripMenuItem1
             // 
             this.showDataToolStripMenuItem1.Name = "showDataToolStripMenuItem1";
-            this.showDataToolStripMenuItem1.Size = new System.Drawing.Size(129, 22);
+            this.showDataToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.showDataToolStripMenuItem1.Text = "Show data";
             this.showDataToolStripMenuItem1.Click += new System.EventHandler(this.showDataToolStripMenuItem1_Click);
             // 
@@ -551,6 +530,29 @@
             this.buttonStornoSample.UseVisualStyleBackColor = true;
             this.buttonStornoSample.Click += new System.EventHandler(this.buttonStornoSample_Click);
             // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.zoteroConnectionToolStripMenuItem,
+            this.deteleManagerToolStripMenuItem});
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.settingsToolStripMenuItem.Text = "Settings";
+            // 
+            // zoteroConnectionToolStripMenuItem
+            // 
+            this.zoteroConnectionToolStripMenuItem.Name = "zoteroConnectionToolStripMenuItem";
+            this.zoteroConnectionToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.zoteroConnectionToolStripMenuItem.Text = "Zotero Connection";
+            this.zoteroConnectionToolStripMenuItem.Click += new System.EventHandler(this.zoteroConnectionToolStripMenuItem_Click);
+            // 
+            // deteleManagerToolStripMenuItem
+            // 
+            this.deteleManagerToolStripMenuItem.Name = "deteleManagerToolStripMenuItem";
+            this.deteleManagerToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.deteleManagerToolStripMenuItem.Text = "Detele Manager";
+            this.deteleManagerToolStripMenuItem.Click += new System.EventHandler(this.deteleManagerToolStripMenuItem_Click);
+            // 
             // Transfer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -596,7 +598,6 @@
         private System.Windows.Forms.ListBox listOfSamples;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showDataToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ListBox selectedSamples;
@@ -610,8 +611,6 @@
         private System.Windows.Forms.ToolStripMenuItem newTransferToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newSampleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newLocationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem deleteSampleToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem deleteLocationToolStripMenuItem;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panelNewSample;
@@ -640,6 +639,9 @@
         private System.Windows.Forms.Button buttonDataStorno;
         private System.Windows.Forms.ToolStripMenuItem showDataToolStripMenuItem1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem zoteroConnectionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deteleManagerToolStripMenuItem;
     }
 }
 

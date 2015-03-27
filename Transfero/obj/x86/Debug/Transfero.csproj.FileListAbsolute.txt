@@ -14,3 +14,4 @@ D:\FZU\Zotero\Transfero\Transfero\obj\x86\Debug\Transfero.csprojResolveAssemblyR
 D:\FZU\Zotero\Transfero\Transfero\obj\x86\Debug\Transfero.Properties.Resources.resources
 D:\FZU\Zotero\Transfero\Transfero\obj\x86\Debug\Transfero.Transfer.resources
 D:\FZU\Zotero\Transfero\Transfero\obj\x86\Debug\Transfero.csproj.GenerateResource.Cache
+D:\FZU\Zotero\Transfero\Transfero\obj\x86\Debug\Transfero.Connection.resources

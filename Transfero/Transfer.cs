@@ -12,8 +12,9 @@ namespace Transfero
 {
     public partial class Transfer : Form
     {
-        Command comm;
-        
+        private Command comm = null;
+        private Zotero zotero = null;
+
         private string usrName = "";
         private string transferLocation = "";
         private ArrayList samplesToTransfer = new ArrayList();
@@ -35,6 +36,7 @@ namespace Transfero
         private void Transfer_Load(object sender, EventArgs e)
         {
             comm = new Command();
+            zotero = new Zotero();
             LoadOffers();
         }
 
@@ -183,6 +185,22 @@ namespace Transfero
             panelNewLocation.Visible = false;
             panelData.Visible = false;
         }
+
+        //Settings
+        private void zoteroConnectionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Connection conn = new Connection(zotero.GetPath());
+            conn.Show();
+            if (!zotero.LoadConnection())
+            {
+                MessageBox.Show("Unsuccessful loading of connection.");
+            }
+        }
+        private void deteleManagerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
         //Data
         private void showDataToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -222,6 +240,12 @@ namespace Transfero
         //buttonclick Add - add sample to database
         private void buttonAddSample_Click(object sender, EventArgs e)
         {
+            //zotero api test
+            if (!zotero.NewSample())
+            {
+                MessageBox.Show("Conection to Zotero isn't working.\rCheck Conection settings.");
+            }
+
             if (newSampleName.Equals("") && newSampleLocation.Equals("") && newSampleOrigin.Equals("") && newSampleOrigin.Equals("") && newSampleWeblink.Equals(""))
             {
                 MessageBox.Show("All fields must be filled.");
@@ -303,8 +327,6 @@ namespace Transfero
             panelNewLocation.Visible = false;
             panelData.Visible = false;
         }
-
-
 
 
 
