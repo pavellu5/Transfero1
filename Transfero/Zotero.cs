@@ -29,7 +29,6 @@ namespace Transfero
 
             link = web + groupID + "/items?key=" + key;
             System.IO.File.WriteAllText(@"D:\link.txt", link);
-            //link = "https://api.zotero.org/groups/326176/items?key=hRGHCO10Yk9hCeCc8DMuyGmo";
         }
 
         public string GetPath()
