@@ -28,16 +28,8 @@ namespace Transfero
                 conn.Show();
                 LoadConnection();
             }
-
-
-<<<<<<< HEAD
             itemLink = web + groupID + "/items?key=" + key;
             collectionLink = web + groupID + "/collections?key=" + key;
-            //System.IO.File.WriteAllText(@"D:\link.txt", link);
-=======
-            link = web + groupID + "/items?key=" + key;
-            System.IO.File.WriteAllText(@"D:\link.txt", link);
->>>>>>> origin/master
         }
 
         public string GetPath()
