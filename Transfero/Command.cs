@@ -49,6 +49,34 @@ namespace Transfero
             return values;
         }
 
+        //returned collection key of location in argument
+        public string GetCollectionKey(string locationName)
+        {
+            string sql = "select collection_key from locations where name = '" + locationName + "'";
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            SQLiteDataReader reader = command.ExecuteReader();
+            string collectionKey = "";
+            if (reader.Read())
+            {
+                collectionKey = reader.GetString(0);
+            }
+            return collectionKey;
+        }
+
+        //returned item key of sample in argument
+        public string GetItemKey(string sampleName)
+        {
+            string sql = "select item_key from samples where name = '" + sampleName + "'";
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            SQLiteDataReader reader = command.ExecuteReader();
+            string collectionKey = "";
+            if (reader.Read())
+            {
+                collectionKey = reader.GetString(0);
+            }
+            return collectionKey;
+        }
+
         public DataTable GetData(string text)
         {
             DataTable data = new DataTable();
@@ -61,7 +89,6 @@ namespace Transfero
 
             return data;
         }
-
 
         //execute new transfer of sample
         public bool NewTransfer(string username, string sample, string location)
@@ -88,14 +115,15 @@ namespace Transfero
             return ret;
         }
 
-        public bool NewSample(string name, string location, string origin, string description, string weblink)
+        //create new sample
+        public bool NewSample(string itemKey, string name, string location, string origin, string description, string weblink)
         {
             bool ret = true;
             try
             {
-                //create new record in table transfers
-                string sql1 = "insert into samples (name, current_location, origin, description, weblink) values ('" + 
-                    name + "', '" + location + "', '" + origin + "', '" + description + "', '" + weblink + "')";
+                //create new record in table samples
+                string sql1 = "insert into samples (item_key, name, current_location, origin, description, weblink) values ('" +
+                    itemKey + "', '" + name + "', '" + location + "', '" + origin + "', '" + description + "', '" + weblink + "')";
                 SQLiteCommand command1 = new SQLiteCommand(sql1, m_dbConnection);
                 command1.ExecuteNonQuery();
 
@@ -107,13 +135,14 @@ namespace Transfero
             return ret;
         }
 
-        public bool NewLocation(string location)
+        //create new location
+        public bool NewLocation(string collectionKey, string location)
         {
             bool ret = true;
             try
             {
-                //create new record in table transfers
-                string sql1 = "insert into locations (name) values ('" + location + "')";
+                //create new record in table locations
+                string sql1 = "insert into locations (collection_key, name) values ('" + collectionKey + "', '" + location + "')";
                 SQLiteCommand command1 = new SQLiteCommand(sql1, m_dbConnection);
                 command1.ExecuteNonQuery();
             }

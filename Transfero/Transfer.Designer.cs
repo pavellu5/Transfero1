@@ -36,6 +36,9 @@
             this.newSampleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newTransferToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zoteroConnectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deteleManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showDataToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,9 +77,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.buttonAddSample = new System.Windows.Forms.Button();
             this.buttonStornoSample = new System.Windows.Forms.Button();
-            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.zoteroConnectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deteleManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panelNewSample.SuspendLayout();
             this.panelNewLocation.SuspendLayout();
@@ -139,23 +139,46 @@
             // newSampleToolStripMenuItem
             // 
             this.newSampleToolStripMenuItem.Name = "newSampleToolStripMenuItem";
-            this.newSampleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newSampleToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.newSampleToolStripMenuItem.Text = "New Sample";
             this.newSampleToolStripMenuItem.Click += new System.EventHandler(this.newSampleToolStripMenuItem_Click);
             // 
             // newLocationToolStripMenuItem
             // 
             this.newLocationToolStripMenuItem.Name = "newLocationToolStripMenuItem";
-            this.newLocationToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newLocationToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.newLocationToolStripMenuItem.Text = "New Location";
             this.newLocationToolStripMenuItem.Click += new System.EventHandler(this.newLocationToolStripMenuItem_Click);
             // 
             // newTransferToolStripMenuItem
             // 
             this.newTransferToolStripMenuItem.Name = "newTransferToolStripMenuItem";
-            this.newTransferToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newTransferToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.newTransferToolStripMenuItem.Text = "New Transfer";
             this.newTransferToolStripMenuItem.Click += new System.EventHandler(this.newTransferToolStripMenuItem_Click);
+            // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.zoteroConnectionToolStripMenuItem,
+            this.deteleManagerToolStripMenuItem});
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.settingsToolStripMenuItem.Text = "Settings";
+            // 
+            // zoteroConnectionToolStripMenuItem
+            // 
+            this.zoteroConnectionToolStripMenuItem.Name = "zoteroConnectionToolStripMenuItem";
+            this.zoteroConnectionToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.zoteroConnectionToolStripMenuItem.Text = "Zotero Connection";
+            this.zoteroConnectionToolStripMenuItem.Click += new System.EventHandler(this.zoteroConnectionToolStripMenuItem_Click);
+            // 
+            // deteleManagerToolStripMenuItem
+            // 
+            this.deteleManagerToolStripMenuItem.Name = "deteleManagerToolStripMenuItem";
+            this.deteleManagerToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.deteleManagerToolStripMenuItem.Text = "Detele Manager";
+            this.deteleManagerToolStripMenuItem.Click += new System.EventHandler(this.deteleManagerToolStripMenuItem_Click);
             // 
             // showDataToolStripMenuItem
             // 
@@ -168,7 +191,7 @@
             // showDataToolStripMenuItem1
             // 
             this.showDataToolStripMenuItem1.Name = "showDataToolStripMenuItem1";
-            this.showDataToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.showDataToolStripMenuItem1.Size = new System.Drawing.Size(129, 22);
             this.showDataToolStripMenuItem1.Text = "Show data";
             this.showDataToolStripMenuItem1.Click += new System.EventHandler(this.showDataToolStripMenuItem1_Click);
             // 
@@ -368,6 +391,7 @@
             this.textBoxNameLocation.Name = "textBoxNameLocation";
             this.textBoxNameLocation.Size = new System.Drawing.Size(135, 20);
             this.textBoxNameLocation.TabIndex = 18;
+            this.textBoxNameLocation.TextChanged += new System.EventHandler(this.textBoxNameLocation_TextChanged);
             // 
             // label7
             // 
@@ -530,29 +554,6 @@
             this.buttonStornoSample.UseVisualStyleBackColor = true;
             this.buttonStornoSample.Click += new System.EventHandler(this.buttonStornoSample_Click);
             // 
-            // settingsToolStripMenuItem
-            // 
-            this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.zoteroConnectionToolStripMenuItem,
-            this.deteleManagerToolStripMenuItem});
-            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.settingsToolStripMenuItem.Text = "Settings";
-            // 
-            // zoteroConnectionToolStripMenuItem
-            // 
-            this.zoteroConnectionToolStripMenuItem.Name = "zoteroConnectionToolStripMenuItem";
-            this.zoteroConnectionToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
-            this.zoteroConnectionToolStripMenuItem.Text = "Zotero Connection";
-            this.zoteroConnectionToolStripMenuItem.Click += new System.EventHandler(this.zoteroConnectionToolStripMenuItem_Click);
-            // 
-            // deteleManagerToolStripMenuItem
-            // 
-            this.deteleManagerToolStripMenuItem.Name = "deteleManagerToolStripMenuItem";
-            this.deteleManagerToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
-            this.deteleManagerToolStripMenuItem.Text = "Detele Manager";
-            this.deteleManagerToolStripMenuItem.Click += new System.EventHandler(this.deteleManagerToolStripMenuItem_Click);
-            // 
             // Transfer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -577,6 +578,7 @@
             this.Name = "Transfer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Transfero";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Transfer_FormClosing);
             this.Load += new System.EventHandler(this.Transfer_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

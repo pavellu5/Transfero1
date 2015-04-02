@@ -41,6 +41,11 @@ namespace Transfero
         }
 
 
+        private void Transfer_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //MessageBox.Show("Closing form and database.");
+            comm.Close();
+        }
 
         //NEW TRANSFER FORM
         //loading filter offers list - from locations
@@ -66,8 +71,6 @@ namespace Transfero
                 listOfLocations.Items.Add(locations[i]);
             }
         }
-
-
 
         //generating list of samples by filtering by locations
         private void filterSamples_SelectedIndexChanged(object sender, EventArgs e)
@@ -122,10 +125,10 @@ namespace Transfero
             usrName = username.Text;
         }
 
-        //buttonclick Do transfer- create new transfer record to database
+        //buttonclick DO TRANSFER - create new transfer record to database
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            if (usrName.Equals("") && samplesToTransfer.Count == 0 && transferLocation.Equals(""))
+            if (usrName.Equals("") || samplesToTransfer.Count == 0 || transferLocation.Equals(""))
             {
                 MessageBox.Show("All fields must be filled.");
             }
@@ -134,12 +137,28 @@ namespace Transfero
                 bool succ = true;
                 for (int i = 0; i < samplesToTransfer.Count; i++)
                 {
-                    succ = comm.NewTransfer(usrName, "" + samplesToTransfer[i], transferLocation);
+                    string transferedSampleName = "" + samplesToTransfer[i];
+                    string collectionKey = comm.GetCollectionKey(transferLocation);
+                    string itemKey = comm.GetItemKey(transferedSampleName);
+                    bool run = zotero.Transfer(itemKey, collectionKey);
+                    if (!run)
+                    {
+                        succ = false;
+                        MessageBox.Show("Conection to Zotero isn't working.\rCheck internet connection.");
+                        break;
+                    }
+                    else
+                    {
+                        bool transfer = comm.NewTransfer(usrName, transferedSampleName, transferLocation);
+                        if (!transfer)
+                        {
+                            MessageBox.Show("Transfer of sample " + transferedSampleName + " failed.");
+                            succ = false;
+                        }
+                    }
                 }
                 if (succ)
-                    MessageBox.Show("Transfer was succesfull.");
-                else
-                    MessageBox.Show("Transfer failed.");
+                    MessageBox.Show("All transfers were succesfull.");
             }
         }
 
@@ -187,6 +206,7 @@ namespace Transfero
         }
 
         //Settings
+        //zotero API connection settings
         private void zoteroConnectionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Connection conn = new Connection(zotero.GetPath());
@@ -196,6 +216,7 @@ namespace Transfero
                 MessageBox.Show("Unsuccessful loading of connection.");
             }
         }
+        //open delete manager
         private void deteleManagerToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -240,19 +261,23 @@ namespace Transfero
         //buttonclick Add - add sample to database
         private void buttonAddSample_Click(object sender, EventArgs e)
         {
-            //zotero api test
-            if (!zotero.NewSample())
-            {
-                MessageBox.Show("Conection to Zotero isn't working.\rCheck Conection settings.");
-            }
-
-            if (newSampleName.Equals("") && newSampleLocation.Equals("") && newSampleOrigin.Equals("") && newSampleOrigin.Equals("") && newSampleWeblink.Equals(""))
+            if (newSampleName.Equals("") || newSampleLocation.Equals("") || newSampleOrigin.Equals("") || newSampleOrigin.Equals("") || newSampleWeblink.Equals(""))
             {
                 MessageBox.Show("All fields must be filled.");
             }
             else
             {
-                bool succ = comm.NewSample(newSampleName, newSampleLocation, newSampleOrigin, newSampleDescription, newSampleWeblink);
+                string collectionKey = comm.GetCollectionKey(newSampleLocation);
+                string itemKey = zotero.NewSample(newSampleName, newSampleLocation, newSampleOrigin, newSampleDescription, newSampleWeblink, collectionKey);
+                bool succ = false;
+                if (itemKey.Equals(""))
+                {
+                    MessageBox.Show("Conection to Zotero isn't working.\rCheck internet connection.");
+                }
+                else
+                {
+                    succ = comm.NewSample(itemKey, newSampleName, newSampleLocation, newSampleOrigin, newSampleDescription, newSampleWeblink);
+                }
                 if (succ)
                     MessageBox.Show("Sample was added.");
                 else
@@ -289,7 +314,16 @@ namespace Transfero
             }
             else
             {
-                bool succ = comm.NewLocation(newLocationName);
+                string collectionKey = zotero.NewLocation(newLocationName);
+                bool succ = false;
+                if (collectionKey.Equals(""))
+                {
+                    MessageBox.Show("Conection to Zotero isn't working.\rCheck internet connection.");
+                }
+                else
+                {
+                    succ = comm.NewLocation(collectionKey, newLocationName);
+                }
                 if (succ)
                     MessageBox.Show("Location was added.");
                 else
@@ -327,6 +361,7 @@ namespace Transfero
             panelNewLocation.Visible = false;
             panelData.Visible = false;
         }
+
 
 
 
