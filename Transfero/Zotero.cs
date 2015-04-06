@@ -125,7 +125,7 @@ namespace Transfero
 
         //UPDATE ITEM (TRANSFER)
         //change a tag and collection of item
-        public bool Transfer(string itemKey, string collectionKey)
+        public bool Transfer(string itemKey, string collectionKey, string locationName)
         {
             bool ret = true;
             string link = web + groupID + "/items/" + itemKey + "?key=" + key;
@@ -140,7 +140,7 @@ namespace Transfero
             {
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
-                    string json = "{\"key\": \"" + itemKey + "\"," + versionLine + "\"collections\": [\"" + collectionKey + "\"]}";
+                    string json = "{\"key\": \"" + itemKey + "\"," + versionLine + "\"tags\": [\"" + locationName + "\"],\"collections\": [\"" + collectionKey + "\"]}";
                     streamWriter.Write(json);
                 }
                 var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();

@@ -126,6 +126,7 @@
             this.Controls.Add(this.textBoxKey);
             this.Controls.Add(this.textBoxGroupID);
             this.Name = "Connection";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Connection";
             this.Load += new System.EventHandler(this.Connection_Load);
             this.ResumeLayout(false);

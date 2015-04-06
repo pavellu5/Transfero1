@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.filterSamples = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.listOfSamples = new System.Windows.Forms.ListBox();
@@ -77,6 +78,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.buttonAddSample = new System.Windows.Forms.Button();
             this.buttonStornoSample = new System.Windows.Forms.Button();
+            this.buttonAddSelected = new System.Windows.Forms.Button();
+            this.buttonRemoveSelected = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panelNewSample.SuspendLayout();
             this.panelNewLocation.SuspendLayout();
@@ -351,6 +354,9 @@
             this.dataGridView1.Location = new System.Drawing.Point(12, 71);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Size = new System.Drawing.Size(459, 224);
             this.dataGridView1.TabIndex = 4;
             // 
@@ -554,6 +560,26 @@
             this.buttonStornoSample.UseVisualStyleBackColor = true;
             this.buttonStornoSample.Click += new System.EventHandler(this.buttonStornoSample_Click);
             // 
+            // buttonAddSelected
+            // 
+            this.buttonAddSelected.Location = new System.Drawing.Point(221, 152);
+            this.buttonAddSelected.Name = "buttonAddSelected";
+            this.buttonAddSelected.Size = new System.Drawing.Size(27, 24);
+            this.buttonAddSelected.TabIndex = 9;
+            this.buttonAddSelected.Text = ">>";
+            this.buttonAddSelected.UseVisualStyleBackColor = true;
+            this.buttonAddSelected.Click += new System.EventHandler(this.buttonAddSelected_Click);
+            // 
+            // buttonRemoveSelected
+            // 
+            this.buttonRemoveSelected.Location = new System.Drawing.Point(221, 181);
+            this.buttonRemoveSelected.Name = "buttonRemoveSelected";
+            this.buttonRemoveSelected.Size = new System.Drawing.Size(27, 24);
+            this.buttonRemoveSelected.TabIndex = 9;
+            this.buttonRemoveSelected.Text = "<<";
+            this.buttonRemoveSelected.UseVisualStyleBackColor = true;
+            this.buttonRemoveSelected.Click += new System.EventHandler(this.buttonRemoveSelected_Click);
+            // 
             // Transfer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -564,6 +590,8 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.buttonRemoveSelected);
+            this.Controls.Add(this.buttonAddSelected);
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.buttonStorno);
             this.Controls.Add(this.label2);
@@ -644,6 +672,8 @@
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem zoteroConnectionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deteleManagerToolStripMenuItem;
+        private System.Windows.Forms.Button buttonAddSelected;
+        private System.Windows.Forms.Button buttonRemoveSelected;
     }
 }
 

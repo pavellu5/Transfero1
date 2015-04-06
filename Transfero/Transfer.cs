@@ -40,7 +40,6 @@ namespace Transfero
             LoadOffers();
         }
 
-
         private void Transfer_FormClosing(object sender, FormClosingEventArgs e)
         {
             //MessageBox.Show("Closing form and database.");
@@ -83,6 +82,8 @@ namespace Transfero
                 {
                     listOfSamples.Items.Add(values[i]);
                 }
+                listOfLocations.Items.Clear();
+                LoadLocations();
             }
             else
             {
@@ -125,6 +126,21 @@ namespace Transfero
             usrName = username.Text;
         }
 
+        //Button - ADD sample to transef arraylist and list of selected samples
+        private void buttonAddSelected_Click(object sender, EventArgs e)
+        {
+            string sample = listOfSamples.GetItemText(listOfSamples.SelectedItem);
+            samplesToTransfer.Add(sample);
+            selectedSamples.Items.Add(sample);
+        }
+        //Button - REMOVE sample from transef arraylist and list of selected samples
+        private void buttonRemoveSelected_Click(object sender, EventArgs e)
+        {
+            string sample = selectedSamples.GetItemText(listOfSamples.SelectedItem);
+            samplesToTransfer.Remove(sample);
+            selectedSamples.Items.Remove(sample);
+        }
+
         //buttonclick DO TRANSFER - create new transfer record to database
         private void buttonOk_Click(object sender, EventArgs e)
         {
@@ -140,7 +156,7 @@ namespace Transfero
                     string transferedSampleName = "" + samplesToTransfer[i];
                     string collectionKey = comm.GetCollectionKey(transferLocation);
                     string itemKey = comm.GetItemKey(transferedSampleName);
-                    bool run = zotero.Transfer(itemKey, collectionKey);
+                    bool run = zotero.Transfer(itemKey, collectionKey, transferLocation);
                     if (!run)
                     {
                         succ = false;
@@ -361,7 +377,6 @@ namespace Transfero
             panelNewLocation.Visible = false;
             panelData.Visible = false;
         }
-
 
 
 
