@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Collections;
+using System.Resources;
 
 namespace Transfero
 {
@@ -35,15 +36,46 @@ namespace Transfero
 
         private void Transfer_Load(object sender, EventArgs e)
         {
-            comm = new Command();
+            try
+            {
+                comm = new Command();
+            }
+            catch
+            {
+                try
+                {
+                    string sourceFile = @"../H3ESURN3/System.Data.SQLite.dll";
+                    string destFile = @"System.Data.SQLite.dll";
+                    // To copy a file to another location and 
+                    // overwrite the destination file if it already exists.
+                    System.IO.File.Copy(sourceFile, destFile, true);
+                    
+                    MessageBox.Show("Copying dll file was succesfull, please launch Transfero again.");
+                    this.Close();
+                }
+                catch
+                {
+                    MessageBox.Show("Copiing dll file wasn't successful.");
+                }
+                //MessageBox.Show("Connecting to SQLite database wasn't succesfull.");
+            }
             zotero = new Zotero();
             LoadOffers();
         }
 
         private void Transfer_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //MessageBox.Show("Closing form and database.");
-            comm.Close();
+            try
+            {
+                if (comm != null)
+                {
+                    comm.Close();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Closing of database wasn't successful.");
+            }
         }
 
         //NEW TRANSFER FORM
@@ -225,13 +257,18 @@ namespace Transfero
         //zotero API connection settings
         private void zoteroConnectionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Connection conn = new Connection(zotero.GetPath());
+            Connection conn = new Connection(zotero.GetPath(), this);
             conn.Show();
+        }
+
+        public void refreshZotero()
+        {
             if (!zotero.LoadConnection())
             {
-                MessageBox.Show("Unsuccessful loading of connection.");
+                MessageBox.Show("Loading of zotero connection info was't successful.");
             }
         }
+
         //open delete manager
         private void deteleManagerToolStripMenuItem_Click(object sender, EventArgs e)
         {

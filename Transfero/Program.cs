@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Reflection;
+using System.IO;
+using System.Security.Cryptography;
 
 namespace Transfero
 {
@@ -16,6 +19,7 @@ namespace Transfero
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Transfer());
+
         }
     }
 }

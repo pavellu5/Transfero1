@@ -5,6 +5,9 @@ using System.Text;
 using System.Data.SQLite;
 using System.Collections;
 using System.Data;
+using System.Reflection;
+using System.Windows.Forms;
+
 
 namespace Transfero
 {
@@ -14,8 +17,10 @@ namespace Transfero
 
         public Command()
         {
-            m_dbConnection = new SQLiteConnection("Data Source=data.sqlite;Version=3;");
-            m_dbConnection.Open();
+
+                m_dbConnection = new SQLiteConnection("Data Source=../SWW69UWZ/data.sqlite;Version=3;");
+                //m_dbConnection = new SQLiteConnection("Data Source=data.sqlite;Version=3;");
+                m_dbConnection.Open();
         }
 
         //execute command from agument of method
@@ -153,12 +158,11 @@ namespace Transfero
             return ret;
         }
 
-
+        //close connection to database
         public void Close()
         {
-            m_dbConnection.Close();
+                m_dbConnection.Close();
         }
-
 
     }
 }

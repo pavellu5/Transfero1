@@ -9,12 +9,13 @@ namespace Transfero
 {
     class Zotero
     {
-        private string path = @"connection.txt";
-        private int timeout = 4000;
+        private string path = @"../SW76B4ZN/connection.txt";
+        //private string path = @"connection.txt";
+        private int timeout;
+        private int defaultTimeout = 4000;
 
         private string web = "https://api.zotero.org/groups/";
         private string groupID = "";
-        private string collectionID = "";
         private string key = "";
         
         private string itemLink;
@@ -44,7 +45,14 @@ namespace Transfero
             {
                 System.IO.StreamReader file = new System.IO.StreamReader(path);
                 groupID = file.ReadLine();
-                collectionID = file.ReadLine();
+                try
+                {
+                    timeout = Int32.Parse(file.ReadLine());
+                }
+                catch
+                {
+                    timeout = defaultTimeout;
+                }
                 key = file.ReadLine();
                 file.Close();
             }

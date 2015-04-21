@@ -3,9 +3,9 @@ D:\FZU\Zotero\Transfero\Transfero\obj\x86\Release\Transfero.Transfer.resources
 D:\FZU\Zotero\Transfero\Transfero\obj\x86\Release\Transfero.csproj.GenerateResource.Cache
 D:\FZU\Zotero\Transfero\Transfero\bin\Release\Transfero.exe
 D:\FZU\Zotero\Transfero\Transfero\bin\Release\Transfero.pdb
-D:\FZU\Zotero\Transfero\Transfero\bin\Release\System.Data.SQLite.dll
-D:\FZU\Zotero\Transfero\Transfero\bin\Release\System.Data.SQLite.xml
 D:\FZU\Zotero\Transfero\Transfero\obj\x86\Release\Transfero.csprojResolveAssemblyReference.cache
 D:\FZU\Zotero\Transfero\Transfero\obj\x86\Release\Transfero.exe
 D:\FZU\Zotero\Transfero\Transfero\obj\x86\Release\Transfero.pdb
 D:\FZU\Zotero\Transfero\Transfero\obj\x86\Release\Transfero.Connection.resources
+D:\FZU\Zotero\Transfero\Transfero\bin\Release\Transfero.exe.config
+D:\FZU\Zotero\Transfero\Transfero\bin\Release\System.Data.SQLite.dll

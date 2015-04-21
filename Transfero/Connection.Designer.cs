@@ -64,9 +64,9 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label3.Location = new System.Drawing.Point(158, 13);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 13);
+            this.label3.Size = new System.Drawing.Size(52, 13);
             this.label3.TabIndex = 13;
-            this.label3.Text = "Collection ID";
+            this.label3.Text = "Timeout";
             // 
             // label2
             // 
@@ -94,6 +94,7 @@
             this.textBoxCollectionID.Name = "textBoxCollectionID";
             this.textBoxCollectionID.Size = new System.Drawing.Size(100, 20);
             this.textBoxCollectionID.TabIndex = 10;
+            this.textBoxCollectionID.Text = "4000";
             this.textBoxCollectionID.TextChanged += new System.EventHandler(this.textBoxCollectionID_TextChanged);
             // 
             // textBoxKey
@@ -128,6 +129,7 @@
             this.Name = "Connection";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Connection";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.Connection_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
